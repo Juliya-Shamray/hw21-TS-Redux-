@@ -1,11 +1,17 @@
-import { HomeFeature, FooterFeature, HeaderFeature } from "./features";
+import { ResetStyles } from "./features/global";
+
+import { FooterFeature, HeaderFeature, PageFeature } from "./features";
+import { AppRouter } from "./common/components";
 
 function App() {
   return (
     <div>
-      <HeaderFeature />
-      <HomeFeature />
-      <FooterFeature />
+      <ResetStyles />
+      <PageFeature>
+        <HeaderFeature />
+        <AppRouter />
+        <FooterFeature />
+      </PageFeature>
     </div>
   );
 }
