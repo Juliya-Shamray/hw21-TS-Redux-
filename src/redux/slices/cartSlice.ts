@@ -11,13 +11,11 @@ interface ProductCartInterface {
 interface CartStateInterface {
   total: number;
   products: ProductCartInterface[];
-  totalPrice: number;
 }
 
 const initialState: CartStateInterface = {
   total: 0,
   products: [],
-  totalPrice: 0,
 };
 
 export const cartSlice = createSlice({
