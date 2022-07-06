@@ -3,39 +3,36 @@ import { css } from "@emotion/react";
 
 import { useDataProduct } from "./hooks";
 
+import EditIcon from "@mui/icons-material/Edit";
+import { Link } from "react-router-dom";
+import { ProductForm } from "./components/ProductForm";
+import { ProductEdit } from "./components/ProductEdit";
+
 export const ProductFeature = () => {
-  const { category, brand, price, thumbnail, rating, title, description } =
-    useDataProduct();
+  const { product, onEditProductSubmit, isEdit } = useDataProduct();
 
   return (
     <div
       css={css`
-        display: flex;
-        gap: 100px;
-        h2 {
-          text-align: center;
-          font-size: 25px;
-          margin-bottom: 50px;
-        }
-        span,
-        p {
-          font-size: 20px;
-        }
+        position: relative;
       `}
     >
-      <img src={thumbnail} alt="" />
-      <div
-        css={css`
-          padding: 15px;
-        `}
-      >
-        <h2>{title}</h2>
-        <span>CATEGORY: {category}</span>
-        <p>BRAND: {brand}</p>
-        <p>{description}</p>
-        <p>PRICE: {price}</p>
-        <span>REATING: {rating}</span>
-      </div>
+      {!isEdit && (
+        <Link to={`/product/${product.id}/edit`}>
+          <EditIcon
+            css={css`
+              position: absolute;
+              right: 0px;
+              top: 5px;
+            `}
+          />
+        </Link>
+      )}
+      {isEdit ? (
+        <ProductEdit onSubmit={onEditProductSubmit} product={product} />
+      ) : (
+        <ProductForm product={product} />
+      )}
     </div>
   );
 };

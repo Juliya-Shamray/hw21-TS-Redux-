@@ -6,5 +6,6 @@ export const AppRouter = () => (
     <Route path="/" element={<HomeFeature />} />
     <Route path="/contacts" element={<ContactsFeature />} />
     <Route path="/product/:productId" element={<ProductFeature />} />
+    <Route path="/product/:productId/:type" element={<ProductFeature />} />
   </Routes>
 );
